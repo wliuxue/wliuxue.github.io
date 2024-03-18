@@ -3,125 +3,73 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>组图</title>
+    <title>笔试题</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
-
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            width: 600px;
-        }
-
-        .box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            width: 200px;
-            /* 根据需要设置容器的宽度 */
-            height: 200px;
-            /* 根据需要设置容器的高度 */
-            border: 1px solid #F1F1F1;
-            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        .ripple-button {
+            display: inline-block;
+            margin: 30px 0;
+            padding: 15px 80px;
+            background: linear-gradient(45deg, #2196F3, #1976D2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
             position: relative;
-            transition: #F1F1F1 0.3s;
-            /* 添加过渡效果 */
+            overflow: hidden;
+            transition: background 0.5s;
         }
-
-        .box::before,
-        .box::after {
-            content: "";
+        .ripple-button:hover {
+            background: linear-gradient(45deg, #1976D2, #2196F3);
+        }
+        .ripple-button::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 1px solid transparent;
-            transition: all 0.3s;
-            /* 添加过渡效果 */
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s, opacity 0.5s;
+            pointer-events: none;
         }
-
-        .box:hover::before {
-            top: -2px;
-            left: -2px;
-        }
-
-        .box:hover::after {
-            bottom: -2px;
-            right: -2px;
-        }
-
-        .box img {
-            width: 50px;
-            /* 根据需要设置图片的宽度 */
-            height: 50px;
-            /* 根据需要设置图片的高度 */
-        }
-
-        .box span {
-            margin-top: 10px;
-            font-size: 20px;
-            /* 根据需要设置图片和文字之间的间距 */
-        }
-
-        .box:hover {
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.03), 0 0 0 1px #E0E0E0;
-            border: 1px #B1BB97 solid;
-        }
-
-        .left {
-            margin-left: 0;
-            /* 将靠左的格子的左边距设置为0，使其靠左对齐 */
-        }
-
-        button {
-            background: #fff;
-            border: 0;
-            display: flex;
-            flex-direction: column;
-            /* 让内容垂直排列 */
-            align-items: center;
-            /* 居中对齐 */
-        }
-        #jumpButton{
-            cursor: pointer;
+        .ripple-button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="box">
-            <img src="./svg/picture.svg" /> <span>图片</span>
-        </div>
-        <div class="box" id="jumpButton">
-                <img src="./svg/rotatingMap.svg" /> <span>轮播图</span>
-        </div>
-        <div class="box left">
-            <img src="./svg/panorama.svg" /> <span>全景图</span>
-        </div>
-        <div class="box left">
-            <img src="./svg/video.svg" /> <span>视频</span>
-        </div>
-        <div class="box">
-            <img src="./svg/text.svg" /> <span>文本</span>
-        </div>
+        <h1>欢迎访问，点击跳转</h1>
+        <a href="rotating.html" class="ripple-button">查看轮播图</a>
+        <a href="hover.html" class="ripple-button">查看组图</a>
+        <a href="demo.html" class="ripple-button">查看demo</a>
     </div>
-    <script>
-        document.getElementById('jumpButton').addEventListener('click', function () {
-            console.log(":Dsadas");
-            window.location.href = 'rotating.html';
-        });
-    </script>
 </body>
-
 </html>
